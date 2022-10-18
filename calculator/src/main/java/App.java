@@ -35,9 +35,9 @@ public class App {
                     try {
 
                         String operation = validateService.readStringBasic();
-                        int number1 = validateService.readNumber("Enter the first number: ");
-                        int number2 = validateService.readNumber("Enter the second number: ");
-                        int result = validateService.calculate(number1, number2, operation);
+                        double number1 = validateService.readNumberDouble("Enter the first number: ");
+                        double number2 = validateService.readNumberDouble("Enter the second number: ");
+                        Number result = validateService.calculate(number1, number2, operation);
 
                         System.out.println();
                         System.out.print(number1 + " ");

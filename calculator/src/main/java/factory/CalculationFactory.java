@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class CalculationFactory {
 
-    Map<String, Calculable> operationMap;
+    Map<String, Calculable<Number>> operationMap;
 
     public CalculationFactory() {
         operationMap = new HashMap<>();
@@ -22,7 +22,7 @@ public class CalculationFactory {
         operationMap.put("/", new Division());
     }
 
-    public Optional<Calculable> create(String operation) {
-        return Optional.ofNullable(operationMap.get(operation));
+    public Calculable<Number> create(String operation) {
+        return Optional.ofNullable(operationMap.get(operation)).orElseThrow(RuntimeException::new);
     }
 }

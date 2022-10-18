@@ -1,9 +1,8 @@
 package service;
 
 import factory.CalculationFactory;
-import rules.Calculable;
 
-import java.util.Optional;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ValidateService {
@@ -23,13 +22,13 @@ public class ValidateService {
     }
 
     public int readNumber(String message) {
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in).useLocale(Locale.US);
         System.out.println(message);
         return input.nextInt();
     }
 
     public double readNumberDouble(String message) {
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in).useLocale(Locale.US);
         System.out.println(message);
         return input.nextDouble();
     }
@@ -75,13 +74,7 @@ public class ValidateService {
         return input.nextLine();
     }
 
-    public int calculate(int number1, int number2, String operation) {
-        Optional<Calculable> calculation = new CalculationFactory().create(operation);
-
-        if (calculation.isEmpty()) {
-            throw new IllegalArgumentException();
-        } else {
-            return calculation.get().calculate(number1, number2);
-        }
+    public Number calculate(double number1, double number2, String operation) {
+        return new CalculationFactory().create(operation).calculate(number1, number2);
     }
 }

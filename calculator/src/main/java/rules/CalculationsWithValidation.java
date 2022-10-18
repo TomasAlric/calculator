@@ -2,9 +2,9 @@ package rules;
 
 import service.Validatable;
 
-public abstract class CalculationsWithValidation implements Calculable, Validatable<Integer> {
+public abstract class CalculationsWithValidation<T> implements Calculable<T>, Validatable<Double> {
 
-    public final int calculate(int number1, int number2) {
+    public final T calculate(double number1, double number2) {
         if (isValid(number2)) {
             return doCalculate(number1, number2);
         } else {
@@ -12,9 +12,9 @@ public abstract class CalculationsWithValidation implements Calculable, Validata
         }
     }
 
-    protected abstract int doCalculate(int number1, int number2);
+    protected abstract T doCalculate(double number1, double number2);
 
-    public boolean isValid(Integer input) {
+    public boolean isValid(Double input) {
         return input != 0;
     }
 
