@@ -14,4 +14,9 @@ public class Division extends CalculationsWithValidation<Number> {
         }
         return number;
     }
+
+    @Override
+    public boolean isValid(Double input) {
+        return input != 0;
+    }
 }

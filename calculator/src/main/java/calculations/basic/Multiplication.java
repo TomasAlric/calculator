@@ -1,11 +1,11 @@
 package calculations.basic;
 
-import rules.Calculable;
+import rules.CalculationsWithValidation;
 
-public class Multiplication implements Calculable<Number> {
+public class Multiplication extends CalculationsWithValidation<Number> {
 
     @Override
-    public Number calculate(double number1, double number2) {
+    protected Number doCalculate(double number1, double number2) {
         Number number;
         if (number1 % 1 == 0 && number2 % 1 == 0) {
             number = (int) (number1 * number2);
@@ -13,5 +13,10 @@ public class Multiplication implements Calculable<Number> {
             number = number1 * number2;
         }
         return number;
+    }
+
+    @Override
+    public boolean isValid(Double input) {
+        return input != 0;
     }
 }
