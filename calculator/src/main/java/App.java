@@ -8,6 +8,7 @@ import service.ColorService;
 import service.ValidateService;
 import ui.UI;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
 
         boolean stop;
+
 
         do {
 
@@ -43,14 +45,14 @@ public class App {
                         System.out.print(number1 + " ");
                         colorService.cyan(operation);
                         System.out.print(" " + number2 + " = " + result);
-                    } catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         throw new IllegalArgumentException();
                     }
                 }
 
                 if (type.equalsIgnoreCase("scientific")) {
                     try {
-                        colorService.yellow("Choose between POWER/SQUARE ROOT");
+                        colorService.yellow("Choose between [POWER/SQUARE ROOT] ");
                         System.out.println();
                         String operation = validateService.readString();
                         if (operation.equalsIgnoreCase("power")) {
@@ -64,10 +66,10 @@ public class App {
                             int number = validateService.readNumber("Enter the number: ");
                             DecimalFormat df = new DecimalFormat("#.00");
                             System.out.println();
-                            System.out.println("SQUARE ROOT = " + df.format(squareRoot.calculateSquareRoot(number)));
+                            System.out.println("SQUARE ROOT = " + df.format(squareRoot.calculate(number)));
                         }
 
-                    }catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         throw new IllegalArgumentException();
                     }
                 }
@@ -80,10 +82,9 @@ public class App {
 
                     if (operation.equalsIgnoreCase("circle")) {
                         Circle circle = new Circle();
-                        double radius = validateService.readRadius();
-                        DecimalFormat df = new DecimalFormat("#.00");
+                        BigDecimal radius = validateService.readNumberBigDecimal("Enter the radius: ");
                         System.out.println();
-                        System.out.println("CIRCLE AREA = " + df.format(circle.circleArea(radius)));
+                        System.out.println("CIRCLE AREA = " + (circle.circleArea(radius)));
                     }
 
                     if (operation.equalsIgnoreCase("rectangle")) {
@@ -107,8 +108,8 @@ public class App {
                     try {
 
                         Imc imc = new Imc();
-                        double number1 = validateService.readNumberDouble("Enter your weight: ");
-                        double number2 = validateService.readNumberDouble("Enter your height: ");
+                        BigDecimal number1 = validateService.readNumberBigDecimal("Enter your weight: ");
+                        BigDecimal number2 = validateService.readNumberBigDecimal("Enter your height: ");
                         DecimalFormat df = new DecimalFormat("#.00");
                         System.out.println("IMC = " + df.format(imc.calculate(number1, number2)));
                     } catch (InputMismatchException e) {

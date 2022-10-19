@@ -2,7 +2,7 @@ package calculations.scientific;
 
 public class SquareRoot {
 
-    public double calculateSquareRoot(int number) {
+    public double calculate(int number) {
         return Math.sqrt(number);
     }
 }
