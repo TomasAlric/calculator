@@ -11,9 +11,14 @@ Calculadora Padrão
 - Subtração
 - Divisão
 - Multiplicação
+
+Calculadora Científica
 - Potenciação
-- Calculadora IMC
-- Calculadora Área
+- Radiciação
+
+Calculadora IMC
+
+Calculadora Área
 - Circulo
 - Quadrado
 - Retângulo
