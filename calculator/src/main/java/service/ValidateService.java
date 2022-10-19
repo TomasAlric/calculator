@@ -2,6 +2,7 @@ package service;
 
 import factory.CalculationFactory;
 
+import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -33,6 +34,12 @@ public class ValidateService {
         return input.nextDouble();
     }
 
+    public BigDecimal readNumberBigDecimal(String message) {
+        Scanner input = new Scanner(System.in).useLocale(Locale.US);
+        System.out.println(message);
+        return input.nextBigDecimal();
+    }
+
     public String readStringBasic() {
         Scanner inbound = new Scanner(System.in);
         ColorService colorService = new ColorService();
@@ -59,12 +66,6 @@ public class ValidateService {
         colorService.yellow("[BASIC/SCIENTIFIC/AREAS/IMC]");
         System.out.println();
         return type.nextLine();
-    }
-
-    public double readRadius() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the radius: ");
-        return input.nextDouble();
     }
 
     public String readString() {
