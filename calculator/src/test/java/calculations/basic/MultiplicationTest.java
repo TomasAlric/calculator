@@ -40,13 +40,4 @@ public class MultiplicationTest {
 
         Assertions.assertEquals(-5.0, result);
     }
-
-    @Test
-    public void testMultiplicationWithZero() {
-        Multiplication multiplication = new Multiplication();
-
-        var result = multiplication.calculate(2, 0);
-
-        Assertions.assertEquals(0, result);
-    }
 }
